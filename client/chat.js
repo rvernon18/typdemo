@@ -3,9 +3,14 @@ Template.chat.events({
 		
 		event.preventDefault();
 		
-		var x = $("#chatinput").val()
+		var assignment = $("#assignment").val();
+		var due_date = $("#due_date").val();
+		var points = $("#points").val();
 		
-		$("#chatinput").val("");
+		
+		$("#assignment").val("");
+		$("#due_date").val("");
+		$("#points").val("");
 
 		var profile = Meteor.user().profile;
 		
@@ -13,8 +18,9 @@ Template.chat.events({
 		  	{
 				uid:Meteor.userId(),  
 				who:profile["firstName"]+" "+profile["lastName"], 
-				what:x,
-				when: new Date()
+				assignment:assignment,
+				when:due_date,
+				points:points
 			};
 			
 		console.dir(chatline);

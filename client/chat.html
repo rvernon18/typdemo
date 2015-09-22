@@ -2,7 +2,12 @@
 	
 	{{#if currentUser}}
 	<form id="chatform">
-		<input type="text" id="chatinput" placeholder="Enter your chat text here" size="100%">
+		
+		Assignment:<input type="text" id="assignment"  size="100%"> <br>
+		Due date:<input type="text" id="due_date"  size="100%"> <br>
+		Points:<input type="text" id="points"  size="100%"> <br>
+		<input type="submit">
+	
 	</form>
 	{{else}}
 	You must be signed in to post comments!
@@ -10,6 +15,14 @@
 	
 	<h2>Showing the last 10 of {{numchats}} chats</h2>
   <table class="table table-bordered">
+  	<thead>
+  		<tr>
+  			<td>Who</td>
+  			<td>Assignment</td>
+  			<td>Points</td>
+  			<td>Due date</td>
+  		</tr>
+  	</thead>
 	  <tbody>
 	{{#each chatlines}}
 	{{> chatitem}}
@@ -23,6 +36,7 @@
 
 <template name="chatitem">
 	<tr>
-		<td>{{who}} said </td> <td>{{what}}</td><td> at {{when}}</td>
+		<td>{{who}}</td>
+		<td>{{assignment}}  </td> <td>{{points}}</td><td> at {{when}}</td>
 	</tr>
 </template>
