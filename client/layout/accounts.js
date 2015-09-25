@@ -61,12 +61,17 @@ Accounts.ui.config({
     }, 
 
     {
-        fieldName: 'cs',
-        fieldLabel: 'CS',
+        fieldName: 'Intro Course',
+        fieldLabel: 'Intro Course',
         inputType: 'checkbox',
         visible: true,
     }, 
-
+{
+        fieldName: 'lastName',
+        fieldLabel: 'Last name',
+        inputType: 'text',
+        visible: true,
+    }, 
 
     {
         fieldName: 'terms',
