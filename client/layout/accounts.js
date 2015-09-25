@@ -66,12 +66,16 @@ Accounts.ui.config({
         inputType: 'checkbox',
         visible: true,
     }, 
+
 {
+
+
         fieldName: 'Undergraduate',
         fieldLabel: 'Undergraduate',
         inputType: 'checkbox',
         visible: true,
     },
+
     {
         fieldName: 'terms',
         fieldLabel: 'I accept the terms and conditions',
