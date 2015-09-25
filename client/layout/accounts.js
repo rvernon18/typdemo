@@ -22,6 +22,7 @@ Accounts.ui.config({
         visible: true,
     }, 
 
+  
     {
         fieldName: 'gender',
         showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
@@ -36,6 +37,25 @@ Accounts.ui.config({
             id: 2,
             label: 'Female',
             value: 'f',
+            checked: 'checked'
+        }],
+        visible: true
+    },
+
+  {
+        fieldName: 'Factuality/Student',
+        showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
+        fieldLabel: 'Factuality/Student',
+        inputType: 'radio',
+        radioLayout: 'vertical',    // It can be 'inline' or 'vertical'
+        data: [{                    // Array of radio options, all properties are required
+            id: 1,                  // id suffix of the radio element
+            label: 'Factuality',          // label for the radio element
+            value: 'Factuality'              // value of the radio element, this will be saved.
+          }, {
+            id: 2,
+            label: 'Student',
+            value: 'Student',
             checked: 'checked'
         }],
         visible: true
