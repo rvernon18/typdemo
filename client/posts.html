@@ -1,0 +1,37 @@
+<template name="posts">
+	
+	{{#if currentUser}}
+	<form id="postform">
+		
+		What is on your mind<input type="text" id="posts"  size="100%"> <br>
+		<input type="submit">
+	
+	</form>
+	{{else}}
+	You must be signed in to post comments!
+	{{/if}}
+	
+	<h2>Recently posted</h2>
+  <table class="table table-bordered">
+  	<thead>
+  		<tr>
+  			
+  		</tr>
+  	</thead>
+	  <tbody>
+	{{#each postlines}}
+	{{> postsitem}}
+	{{/each}}
+</tbody>
+</table>
+
+
+
+</template>
+
+<template name="postsitem">
+	<tr>
+		<td>{{who}}</td>
+		<td>{{posts}}</td><td> at {{when}}</td>
+	</tr>
+</template>
