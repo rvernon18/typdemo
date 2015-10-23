@@ -1,0 +1,23 @@
+body {
+	background:#eeeeee;
+}
+
+p#blue{
+  font: 20pt italic;
+  border: solid black;
+    background:blue;
+    color:white;
+}
+
+p#italic{
+  font: 20pt monospace;
+}
+
+div#b {
+font: 40pt italic;
+    border:solid blue;
+    margin:1in;
+    padding:1in;
+    background:black;
+    color:red;
+}
