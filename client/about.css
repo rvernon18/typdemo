@@ -1,7 +1,14 @@
+
 div#about h2 {
 	font-family: fantasy;
 }
 
 div#about p {
 	background:white;
+}
+
+div#about {
+	background:white;
+	color: black;
+	font: 20pt bold fantasy;
 }
