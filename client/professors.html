@@ -1,5 +1,27 @@
 <template name="professors">
-MKTYP Professors<br>
 
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Current TYP Professors <span class="label label-default">{{numprofessors}}</span></h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each professors}}
+		{{> professor}}
+		{{/each}}
+	  </div>
+	</div>
 
+</template>
+
+<template name="professor">
+	<div class="list-group-item">
+		<h5 class="list-group-item-heading">{{name}}</h5>
+	    <p class="list-group-item-text">Office: <i class="fa fa-building"></i> {{office_location}} <i class="fa fa-calendar"></i> {{office_hours}}</p>
+	    <p class="list-group-item-text">TYP Course: <a href="{{course_url}}" target="_black">{{typ_course}}</a></p>
+	    
+	    <p class="list-group-item-text post-details">
+	    <i class="fa fa-envelope"></i> <a href="mailto:{{email}}">{{email}}</a>
+	    </p>
+	</div>
+ origin/master
 </template>
