@@ -3,13 +3,14 @@ Template.posts.events({
 		
 		event.preventDefault();
 		
-		var posts = $("#posts").val();
+		var assignment = $("#type").val();
+		var due_date = $("#due_date").val();
+		var points = $("#points").val();
 		
 		
-		
-		$("#posts").val("");
-		//$("#posts_date").val("");
-		
+		$("#type").val("");
+		$("#due_date").val("");
+		$("#points").val("");
 
 		var profile = Meteor.user().profile;
 		
@@ -17,9 +18,9 @@ Template.posts.events({
 		  	{
 				uid:Meteor.userId(),  
 				who:profile["firstName"]+" "+profile["lastName"], 
-				posts:posts,
-				when:new Date(),
-				
+				assignment:assignment,
+				when:due_date,
+				points:points
 			};
 			
 		console.dir(postline);
@@ -30,9 +31,9 @@ Template.posts.events({
 
 Template.posts.helpers({
 	postlines: function(){
-		return PostLines.find({});
+		return PostLines.find({},{limit:10, sort:{when:-1}});
 	},
-	numchats: function(){
+	numposts: function(){
 		return PostLines.find().count();
 	}
 });
