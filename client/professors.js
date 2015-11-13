@@ -30,6 +30,14 @@ var professors = [
 		typ_course:"Writing 1",
 		course_url: "",
 		email:"ssutton@brandeis.edu"
+    },
+    {
+		name:"Doug Bafford",
+		office_location:"Brown Social Science Center, Room 218",
+		office_hours:":Mon 4:30-5:30,Fri 10:00-11:00, and by appointment",
+		typ_course:"Writing 2",
+		course_url: "",
+		email:"bafford@brandeis.edu"
     }
 ];
 Template.professors.helpers({
