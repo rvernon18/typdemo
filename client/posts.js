@@ -3,37 +3,88 @@ Template.posts.events({
 		
 		event.preventDefault();
 		
-		var assignment = $("#type").val();
-		var due_date = $("#due_date").val();
-		var points = $("#points").val();
+		var heading = $("#heading").val();
+		var category = $("#category").val();
+		var body = $("#body").val();
 		
-		
-		$("#type").val("");
-		$("#due_date").val("");
-		$("#points").val("");
+		$("#heading").val("");
+		$("#category").val("");
+		$("#body").val("");
 
 		var profile = Meteor.user().profile;
 		
-		var postline = 
-		  	{
-				uid:Meteor.userId(),  
-				who:profile["firstName"]+" "+profile["lastName"], 
-				assignment:assignment,
-				when:due_date,
-				points:points
-			};
-			
-		console.dir(postline);
-		
-		PostLines.insert(postline);
+		var post = {
+			uid:Meteor.userId(),  
+			name:profile["firstName"]+" "+profile["lastName"],
+			username:profile["username"],
+			body:body,
+			heading:heading,
+			category:category,
+			likes:[],
+			dislikes:[],
+			when: new Date()
+		};		
+		Posts.insert(post);
 	}
 });
 
 Template.posts.helpers({
-	postlines: function(){
-		return PostLines.find({},{limit:10, sort:{when:-1}});
+	posts: function(){
+		return Posts.find({},{sort:{when:-1}});
 	},
 	numposts: function(){
-		return PostLines.find().count();
+		return Posts.find().count();
 	}
+});
+
+Template.post.helpers({
+	likes: function(){
+		return this.likes.length;
+	},
+	dislikes: function(){
+		return this.dislikes.length;
+	},
+	numcomments: function(){
+    return PostComments.find({pid:this._id},{}).count();
+  	},
+  	authorized: function(){
+	    return this.uid==Meteor.userId();
+	  }
+});
+
+Template.post.events({
+	"click #like": function () {
+      var likes = this.likes;
+      var index = likes.indexOf(Meteor.userId());
+      if (index < 0) {
+      	likes.push(Meteor.userId());
+      }
+      var dislikes = this.dislikes;
+      index = dislikes.indexOf(Meteor.userId());
+      if (index > -1) {
+      	dislikes.splice(index, 1);
+      }
+      Posts.update(this._id, {
+  		$set: {likes:likes,dislikes:dislikes}
+  	  });
+    },
+
+	"click #dislike": function () {
+      var dislikes = this.dislikes;
+      var index = dislikes.indexOf(Meteor.userId());
+      if (index < 0) {
+      	dislikes.push(Meteor.userId());
+      }
+      var likes = this.likes;
+      index = likes.indexOf(Meteor.userId());
+      if (index > -1) {
+      	likes.splice(index, 1);
+      }
+      Posts.update(this._id, {
+  		$set: {likes:likes,dislikes:dislikes}
+  	  });
+    },
+    "click #delete": function () {
+    	Meteor.call("deletePost", this._id);
+    }
 });

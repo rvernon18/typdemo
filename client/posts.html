@@ -1,50 +1,70 @@
-
 <template name="posts">
-
+	
 	{{#if currentUser}}
-	<form id="postform">
-		
-		Post Type:
-		<select class="form-control" name="Post_Type" id="Post_Type">
+	<form id="postform" class="bg-info">
+		<div class="input-group">
+		  <span class="input-group-addon">Heading</span>
+		  <input type="text" id="heading" class="form-control">
+		</div>
+		<div class="input-group">
+		  <span class="input-group-addon">Category</span>
+		  <select class="form-control" name="category" id="category">
 		  	<option value="">Select Post Category</option>
+		  	<option value="Announcement">Announcement</option>
 		  	<option value="Assignments">Assignments</option>
 		  	<option value="Exam">Exam</option>
-		  	<option value="Announcements">Announements</option>
 		  	<option value="Office Hours">Office Hours</option>
-		  </select><br>
-		Due date:<input type="text" id="due_date"  size="100%"> <br>
-		Points:<input type="text" id="points"  size="100%"> <br>
-		<input type="submit">
-	
+		  </select>
+		</div>
+		<div class="input-group">
+		  <span class="input-group-addon">Body</span>
+		  <textarea id="body" class="form-control"></textarea>
+		</div>
+		<div class="input-group text-center">
+		  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane-o"></i> Submit</button>
+		</div>
 	</form>
+
+	<br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Posts</h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each posts}}
+		{{> post}}
+		{{/each}}
+	  </div>
+	</div>
+
 	{{else}}
-	You must be signed in to post comments!
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle red"></i> You must be logged in to create or view posts!
+	</div>
 	{{/if}}
-	
-	<h2>Showing the last 10 of {{numposts}} posts</h2>
-  <table class="table table-bordered">
-  	<thead>
-  		<tr>
-  			<td>Who</td>
-  			<td>Assignment</td>
-  			<td>Points</td>
-  			<td>Due date</td>
-  		</tr>
-  	</thead>
-	  <tbody>
-	{{#each postlines}}
-	{{> postitem}}
-	{{/each}}
-</tbody>
-</table>
-
-
 
 </template>
 
-<template name="postitem">
-	<tr>
-		<td>{{who}}</td>
-		<td>{{assignment}}  </td> <td>{{points}}</td><td> at {{when}}</td>
-	</tr>
+
+
+<template name="post">
+	<div class="list-group-item">
+	<a href="/posts/{{_id}}">
+		<h5 class="list-group-item-heading">{{heading}}</h5>
+	</a>
+    <p class="list-group-item-text">{{body}}</p>
+    
+    <p class="list-group-item-text post-details">
+    <span class="badge">{{category}}</span> <i class="fa fa-ellipsis-v"></i>
+    <i class="fa fa-user"></i> {{name}} <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-comments"></i> {{numcomments}} comments <i class="fa fa-ellipsis-v"></i> 
+    <i class="fa fa-calendar"></i> {{when}} <i class="fa fa-ellipsis-v"></i> 
+    <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{likes}} <i class="fa fa-thumbs-up"></i></button> <i class="fa fa-ellipsis-v"></i> 
+    <button type="button" id="dislike" title="Click to dislike post!" class="btn btn-danger btn-xs">{{dislikes}} <i class="fa fa-thumbs-down"></i></button>
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Post!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
+    </p>
+  </div>
 </template>
