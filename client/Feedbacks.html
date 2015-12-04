@@ -1,0 +1,30 @@
+<template name="feedbackPage">
+	<form id="feedbackform">
+		<div class="input-group">
+		  <span class="input-group-addon">New Feedback</span>
+		  <input type="text" id="feedback-body" class="form-control" size="100%">
+		</div>
+	</form>
+	<br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	  	<h5>Feedback Submissions <span class="badge">{{numfeedbacks}}</span></h5>
+	  </div>
+	  <div class="panel-body list-group">
+	  	{{#each feedbacks}}
+		{{> feedback}}
+		{{/each}}
+	  </div>
+	</div>
+</template>
+
+<template name="feedback">
+	<div class="list-group-item">
+    <p class="list-group-item-text">{{body}}</p>
+    <h6 class="list-group-item-heading text-muted"><i class="fa fa-user"></i> {{who}} <i class="fa fa-calendar"></i> {{when}}
+    {{#if authorized}}
+    	<button type="button" id="delete" title="Delete Feedback!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+    {{/if}}
+    </h6>
+  </div>
+</template>
