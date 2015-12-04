@@ -3,7 +3,7 @@ Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
         fieldName: 'firstName',
-        fieldLabel: 'First name',
+        fieldLabel: 'First Name',
         inputType: 'text',
         visible: true,
         validate: function(value, errorFunction) {
@@ -17,7 +17,7 @@ Accounts.ui.config({
     }, 
     {
         fieldName: 'lastName',
-        fieldLabel: 'Last name',
+        fieldLabel: 'Last Name',
         inputType: 'text',
         visible: true,
     }, 
@@ -43,15 +43,15 @@ Accounts.ui.config({
     },
 
   {
-        fieldName: 'Factuality/Student',
+        fieldName: 'Faculty/Student',
         showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
-        fieldLabel: 'Factuality/Student',
+        fieldLabel: 'Faculty/Student',
         inputType: 'radio',
         radioLayout: 'vertical',    // It can be 'inline' or 'vertical'
         data: [{                    // Array of radio options, all properties are required
             id: 1,                  // id suffix of the radio element
-            label: 'Factuality',          // label for the radio element
-            value: 'Factuality'              // value of the radio element, this will be saved.
+            label: 'Faculty',          // label for the radio element
+            value: 'Faculty'              // value of the radio element, this will be saved.
           }, {
             id: 2,
             label: 'Student',
@@ -59,41 +59,6 @@ Accounts.ui.config({
             checked: 'checked'
         }],
         visible: true
-    },
-
-
-     {
-        fieldName: 'country',
-        fieldLabel: 'Country',
-        inputType: 'select',
-        showFieldLabel: true,
-        empty: 'Please select your country of residence',
-        data: [{
-            id: 1,
-            label: 'United States',
-            value: 'us'
-          }, {
-            id: 2,
-            label: 'Spain',
-            value: 'es',
-                    }],
-        visible: true
-    }, 
-
-    {
-        fieldName: 'Intro Course',
-        fieldLabel: 'Intro Course',
-        inputType: 'checkbox',
-        visible: true,
-    }, 
-
-{
-
-
-        fieldName: 'Undergraduate',
-        fieldLabel: 'Undergraduate',
-        inputType: 'checkbox',
-        visible: true,
     },
 
     {

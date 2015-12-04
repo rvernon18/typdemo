@@ -1,6 +1,5 @@
 Template.feedbackPage.events({
   "submit #feedbackform": function(event){
-    
     event.preventDefault();
     
     var body = $("#feedback-body").val();
@@ -21,7 +20,7 @@ Template.feedbackPage.events({
 
 Template.feedbackPage.helpers({
   feedbacks: function(){
-    return Feedbacks.find({sort:{when:-1}});
+    return Feedbacks.find({},{sort:{when:-1}});
   },
   numfeedbacks: function(){
     return Feedbacks.find({}).count();
